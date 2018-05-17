@@ -1,0 +1,18 @@
+{
+  "name": "multilinguals/apollo-client",
+  "description": "apollo client for php",
+  "type": "library",
+  "keywords": [
+    "Apollo",
+    "Client"
+  ],
+  "homepage": "https://github.com/multilinguals/apollo-php-client",
+  "require": {
+    "php": "^5.3.3 || ^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Org\\Multilinguals\\Apollo\\Client\\": "src/"
+    }
+  }
+}

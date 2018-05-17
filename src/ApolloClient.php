@@ -1,4 +1,5 @@
 <?php
+namespace Org\Multilinguals\Apollo\Client;
 
 class ApolloClient
 {
@@ -58,11 +59,11 @@ class ApolloClient
         $error = curl_error($ch);
         curl_close($ch);
         if ($body === false) {
-            throw new Exception($error);
+            throw new \Exception($error);
         }
 
         if ($httpCode != 200 && $httpCode != 304) {
-            throw new Exception($body);
+            throw new \Exception($body);
         }
 
         if ($httpCode == 200) {
@@ -97,11 +98,11 @@ class ApolloClient
                 $httpCode = curl_getinfo($ch,CURLINFO_HTTP_CODE);
                 $error = curl_error($ch);
                 if ($response === false) {
-                    throw new Exception($error);
+                    throw new \Exception($error);
                 }
 
                 if ($httpCode != 200 && $httpCode != 304) {
-                    throw new Exception($response);
+                    throw new \Exception($response);
                 }
 
                 if ($httpCode == 200) {//如果配置有更新
@@ -113,17 +114,17 @@ class ApolloClient
                                 $this->pull_config($r['namespaceName']);
                                 //配置变更-更新notificationId
                                 $this->notifications[$r['namespaceName']]['notificationId'] = $r['notificationId'];
-                            }catch (Exception $e) {
+                            }catch (\Exception $e) {
                                 //某个namespace拉取配置失败的时候，不影响其它namespace
                                 echo $e->getMessage()."\n";
                             }
                         }
                     }
                     //如果定义了配置变更的回调，比如重新整合配置，则执行回调
-                    ($callback instanceof Closure) && $callback();
+                    ($callback instanceof \Closure) && call_user_func($callback);
                 }
             }while (1);
-        }catch (Exception $e) {
+        }catch (\Exception $e) {
             curl_close($ch);
             return $e->getMessage();
         }
