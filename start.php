@@ -25,7 +25,7 @@ if ($clientIp = getenv('CLIENTIP')) {
 ini_set('memory_limit','128M');
 $pid = getmypid();
 echo "start [$pid]\n";
-$restart = true; //失败自动重启
+$restart = false; //失败自动重启
 do {
     $error = $apollo->start();
     if ($error) echo('error:'.$error."\n");

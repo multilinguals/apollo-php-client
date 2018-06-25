@@ -5,7 +5,7 @@
 ```bash
 $ composer install multilinguals/apollo-client
 ```
-php version >= 5.3 required
+php version >= 5.4 required
 
 ## Features
 - 支持apollo配置变更的适时获取
@@ -52,16 +52,16 @@ do {
 
 ### 配置管理
 
-拉取的配置默认保存在脚本所在目录，每个namespace的配置以`apolloConfig.${namespaceName}.php`的方式命名保存
+拉取的配置默认保存在脚本所在目录，每个namespace的配置以`apolloConfig.{$namespaceName}.php`的方式命名保存
 
 ### Docker环境客户端自启动
 
 在docker的启动脚本中加入的启动代码，一般的php容器启动脚本是docker-php-entrypoint
 ```bash
-if [ -f "/var/www/html/start.php" ]; then
-    apollo_ps=$(ps -aux | grep -c "php /var/www/html/start.php")
+if [ -f "/path/to/start.php" ]; then
+    apollo_ps=$(ps -aux | grep -c "php /path/to/start.php")
     if [ $apollo_ps -eq 1 ]; then
-        php /var/www/html/start.php &
+        php /path/to/start.php &
     fi
 fi
 ```
