@@ -1,4 +1,5 @@
 <?php
+
 namespace Org\Multilinguals\Apollo\Client;
 
 class ApolloClient
@@ -18,20 +19,23 @@ class ApolloClient
      * @param string $appId apollo配置项目的appid
      * @param array $namespaces apollo配置项目的namespace
      */
-    public function __construct($configServer, $appId, array $namespaces) {
+    public function __construct($configServer, $appId, array $namespaces)
+    {
         $this->configServer = $configServer;
         $this->appId = $appId;
         foreach ($namespaces as $namespace) {
-            $this->notifications[$namespace] = ['namespaceName'=>$namespace,'notificationId'=>-1];
+            $this->notifications[$namespace] = ['namespaceName' => $namespace, 'notificationId' => -1];
         }
         $this->save_dir = dirname($_SERVER['SCRIPT_FILENAME']);
     }
 
-    public function setCluster($cluster) {
+    public function setCluster($cluster)
+    {
         $this->cluster = $cluster;
     }
 
-    public function setClientIp($ip) {
+    public function setClientIp($ip)
+    {
         $this->clientIp = $ip;
     }
 
@@ -64,12 +68,13 @@ class ApolloClient
     public function pullConfig($namespaceName) {
         $base_api = rtrim($this->configServer, '/').'/configs/'.$this->appId.'/'.$this->cluster.'/';
         $api = $base_api.$namespaceName;
+
         $args = [];
         $args['ip'] = $this->clientIp;
         $config_file = $this->save_dir.DIRECTORY_SEPARATOR.'apolloConfig.'.$namespaceName.'.php';
         $args['releaseKey'] = $this->_getReleaseKey($config_file);
 
-        $api .= '?'.http_build_query($args);
+        $api .= '?' . http_build_query($args);
 
         $ch = curl_init($api);
         curl_setopt($ch, CURLOPT_TIMEOUT, $this->pullTimeout);
@@ -77,13 +82,13 @@ class ApolloClient
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
         $body = curl_exec($ch);
-        $httpCode = curl_getinfo($ch,CURLINFO_HTTP_CODE);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $error = curl_error($ch);
         curl_close($ch);
 
         if ($httpCode == 200) {
             $result = json_decode($body, true);
-            $content = '<?php return '.var_export($result, true).';';
+            $content = '<?php return ' . var_export($result, true) . ';';
             file_put_contents($config_file, $content);
         }elseif ($httpCode != 304) {
             echo $body ?: $error."\n";
