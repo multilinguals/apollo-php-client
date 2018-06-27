@@ -10,7 +10,7 @@ class ApolloClient
     protected $clientIp = '127.0.0.1'; //绑定IP做灰度发布用
     protected $notifications = [];
     protected $pullTimeout = 10; //获取某个namespace配置的请求超时时间
-    protected $intervelTimeout = 60; //每次请求获取apollo配置变更时的超时时间
+    protected $intervalTimeout = 60; //每次请求获取apollo配置变更时的超时时间
     public $save_dir; //配置保存目录
 
     /**
@@ -47,12 +47,12 @@ class ApolloClient
         $this->pullTimeout = $pullTimeout;
     }
 
-    public function setIntervelTimeout($intervelTimeout) {
-        $intervelTimeout = intval($intervelTimeout);
-        if ($intervelTimeout < 1 || $intervelTimeout > 300) {
+    public function setIntervalTimeout($intervalTimeout) {
+        $intervalTimeout = intval($intervalTimeout);
+        if ($intervalTimeout < 1 || $intervalTimeout > 300) {
             return;
         }
-        $this->intervelTimeout = $intervelTimeout;
+        $this->intervalTimeout = $intervalTimeout;
     }
 
     private function _getReleaseKey($config_file) {
@@ -196,7 +196,7 @@ class ApolloClient
      */
     public function start($callback = null) {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_TIMEOUT, $this->intervelTimeout);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $this->intervalTimeout);
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         try {
