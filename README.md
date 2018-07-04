@@ -2,7 +2,7 @@
 
 ## install
 ```bash
-$ composer install multilinguals/apollo-client
+$ composer require multilinguals/apollo-client
 ```
 php version >= 5.4 required
 
@@ -17,12 +17,8 @@ php version >= 5.4 required
 ```php
 #!/usr/bin/env php
 <?php
-PHP_SAPI === 'cli' || exit();
-
+require 'vender/autoload.php'; // autoload
 use Org\Multilinguals\Apollo\Client\ApolloClient;
-
-//引入apollo客户端库文件
-require __DIR__.'/src/ApolloClient.php';
 
 //specify address of apollo server
 $server = getenv('CONFIG_SERVER'); // get server address from env
@@ -32,6 +28,7 @@ $appid = getenv('APPID'); // get appid from env
 
 //specify namespaces of appid at apollo config server
 $namespaces = getenv('NAMESPACE'); // get namespaces from env
+$namespaces = explode(',', $namespaces);
 
 $apollo = new ApolloClient($server, $appid, $namespaces);
 
