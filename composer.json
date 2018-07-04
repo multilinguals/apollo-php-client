@@ -2,6 +2,8 @@
   "name": "multilinguals/apollo-client",
   "description": "apollo client for php",
   "type": "library",
+  "version": "1.0.0",
+  "license": "MIT",
   "keywords": [
     "Apollo",
     "Client"
