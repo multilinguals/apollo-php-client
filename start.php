@@ -15,6 +15,7 @@ $appid = getenv('APPID'); // get appid from env
 
 //specify namespaces of appid at apollo config server
 $namespaces = getenv('NAMESPACE'); // get namespaces from env
+$namespaces = explode(',', $namespaces);
 
 $apollo = new ApolloClient($server, $appid, $namespaces);
 
