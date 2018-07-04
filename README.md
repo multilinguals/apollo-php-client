@@ -1,5 +1,4 @@
-# apollo-php-client
-携程Apollo配置中心php SDK
+# [携程Apollo](https://github.com/ctripcorp/apollo)的PHP客户端
 
 ## install
 ```bash
