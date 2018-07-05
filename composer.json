@@ -2,7 +2,6 @@
   "name": "multilinguals/apollo-client",
   "description": "apollo client for php",
   "type": "library",
-  "version": "1.0.0",
   "license": "MIT",
   "keywords": [
     "Apollo",
@@ -10,7 +9,7 @@
   ],
   "homepage": "https://github.com/multilinguals/apollo-php-client",
   "require": {
-    "php": "^5.4.0 || ^7.0"
+    "php": "^5.4.0"
   },
   "autoload": {
     "psr-4": {
