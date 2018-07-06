@@ -4,7 +4,7 @@
 ```bash
 $ composer require multilinguals/apollo-client
 ```
-php version >= 5.4 required
+php version >= 7.0 required
 
 ## Features
 - 支持apollo配置变更的适时获取
@@ -52,7 +52,7 @@ do {
 
 ### Docker环境客户端自启动
 
-在docker的启动脚本中加入的启动代码，一般的php容器启动脚本是docker-php-entrypoint
+在docker的启动脚本中加入启动代码，一般的php容器启动脚本是docker-php-entrypoint
 ```bash
 if [ -f "/path/to/start.php" ]; then
     apollo_ps=$(ps -aux | grep -c "php /path/to/start.php")
