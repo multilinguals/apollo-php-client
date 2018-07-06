@@ -1,10 +1,14 @@
 # [携程Apollo](https://github.com/ctripcorp/apollo)的PHP客户端
 
 ## install
+php version >= 7.0
 ```bash
 $ composer require multilinguals/apollo-client
 ```
-php version >= 7.0 required
+php version >= 5.4 , <7.0
+```bash
+$ composer require multilinguals/apollo-client --ignore-platform-reqs
+```
 
 ## Features
 - 支持apollo配置变更的适时获取
