@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-require 'vender/autoload.php';
+require 'vendor/autoload.php';
 use Org\Multilinguals\Apollo\Client\ApolloClient;
 
 //specify address of apollo server
