@@ -39,6 +39,10 @@ class ApolloClient
         $this->clientIp = $ip;
     }
 
+    public function setSaveDir($saveDir) {
+        $this->save_dir = $saveDir;
+    }
+
     public function setPullTimeout($pullTimeout) {
         $pullTimeout = intval($pullTimeout);
         if ($pullTimeout < 1 || $pullTimeout > 300) {
