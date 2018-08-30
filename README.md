@@ -11,7 +11,7 @@ $ composer require multilinguals/apollo-client --ignore-platform-reqs
 ```
 
 ## Features
-- 支持apollo配置变更的适时获取
+- 支持apollo配置变更的实时获取
 - 支持拉取配置后自定义的回调处理
 
 ## Usage
