@@ -1,13 +1,13 @@
 {
-  "name": "multilinguals/apollo-client",
-  "description": "apollo client for php",
+  "name": "lackhurt/apollo-client",
+  "description": "apollo client for php, forked from multilinguals/apollo-php-client",
   "type": "library",
   "license": "MIT",
   "keywords": [
     "Apollo",
     "Client"
   ],
-  "homepage": "https://github.com/multilinguals/apollo-php-client",
+  "homepage": "https://github.com/lackhurt/apollo-php-client/",
   "require": {
     "php": "~7.0"
   },
