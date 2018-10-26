@@ -21,7 +21,7 @@ $callback = function () {
         }
     }
     if (!$apollo) {
-        throw new Exception('Load Apollo Config Failed');
+        throw new Exception('Load Apollo Config Failed, no config available');
     }
     ob_start();
     include ENV_TPL;
