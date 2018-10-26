@@ -64,6 +64,11 @@ class ApolloClient
         return $releaseKey;
     }
 
+    //获取单个namespace的配置文件路径
+    public function getConfigFile($namespaceName) {
+        return $this->save_dir.DIRECTORY_SEPARATOR.'apolloConfig.'.$namespaceName.'.php';
+    }
+
     //获取单个namespace的配置-无缓存的方式
     public function pullConfig($namespaceName) {
         $base_api = rtrim($this->configServer, '/').'/configs/'.$this->appId.'/'.$this->cluster.'/';
@@ -71,7 +76,7 @@ class ApolloClient
 
         $args = [];
         $args['ip'] = $this->clientIp;
-        $config_file = $this->save_dir.DIRECTORY_SEPARATOR.'apolloConfig.'.$namespaceName.'.php';
+        $config_file = $this->getConfigFile($namespaceName);
         $args['releaseKey'] = $this->_getReleaseKey($config_file);
 
         $api .= '?' . http_build_query($args);
@@ -107,7 +112,7 @@ class ApolloClient
         $query_args['ip'] = $this->clientIp;
         foreach ($namespaceNames as $namespaceName) {
             $request = [];
-            $config_file = $this->save_dir.DIRECTORY_SEPARATOR.'apolloConfig.'.$namespaceName.'.php';
+            $config_file = $this->getConfigFile($namespaceName);
             $request_url = $base_url.$namespaceName;
             $query_args['releaseKey'] = $this->_getReleaseKey($config_file);
             $query_string = '?'.http_build_query($query_args);
