@@ -21,7 +21,7 @@ $ composer require multilinguals/apollo-client --ignore-platform-reqs
 ```php
 #!/usr/bin/env php
 <?php
-require 'vender/autoload.php'; // autoload
+require 'vendor/autoload.php'; // autoload
 use Org\Multilinguals\Apollo\Client\ApolloClient;
 
 //specify address of apollo server
